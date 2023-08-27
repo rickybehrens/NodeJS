@@ -68,40 +68,12 @@ ${data.description}
 - [Tests](#test)
 - [Questions](#questions)`;
 
-  // Conditionally include the Screenshots section
+  // Only include the Screenshots section if data.screenshots is true
   if (data.screenshots) {
     readmeContent += `
 - [Screenshots](#screenshots)`;
-  }
-
-  readmeContent += `
-
-## Installation
-To install necessary dependencies, run the following command:
-\`\`\`
-${data.installation}
-\`\`\`
-
-## Usage
-${data.usage}
-
-## License
-${renderLicenseSection(data.license)}
-
-## Contributing
-${data.contributing}
-
-## Test
-To run tests, run the following command:
-\`\`\`
-${data.test}
-\`\`\`
-
-## Questions
-If you have any questions about the repo, open an issue or contact me directly at [${data.email}](${emailLink}). You can find more of my work at [${data.name}](${githubLink}).`;
-
-  // Conditionally include the Screenshots section with images
-  if (data.screenshots) {
+  
+    // Add the screenshot section
     readmeContent += `
     
 ## Screenshots
