@@ -39,7 +39,10 @@ function renderLicenseLink(license) {
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) { }
+function renderLicenseSection(license) {
+  // You can include license information here
+  return `This project is licensed under the ${license} license.`;
+}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
@@ -51,7 +54,7 @@ function generateMarkdown(data) {
   // Get the license link URL based on the selected license
   const licenseLinkUrl = renderLicenseLink(data.license);
 
-  return `# ${data.title}
+  let readmeContent = `# ${data.title}
   [![Github License](${licenseBadgeUrl})](${licenseLinkUrl})
 
 ## Project Description
@@ -63,7 +66,15 @@ ${data.description}
 - [License](#license)
 - [Contributing](#contributing)
 - [Tests](#test)
-- [Questions](#questions)
+- [Questions](#questions)`;
+
+  // Conditionally include the Screenshots section
+  if (data.screenshots) {
+    readmeContent += `
+- [Screenshots](#screenshots)`;
+  }
+
+  readmeContent += `
 
 ## Installation
 To install necessary dependencies, run the following command:
@@ -75,7 +86,7 @@ ${data.installation}
 ${data.usage}
 
 ## License
-This project is licensed under the ${data.license} license
+${renderLicenseSection(data.license)}
 
 ## Contributing
 ${data.contributing}
@@ -87,9 +98,20 @@ ${data.test}
 \`\`\`
 
 ## Questions
-If you have any questions about the repo, open an issue or contact me directly at [${data.email}](${emailLink}). You can find more of my work at [${data.name}](${githubLink}).
+If you have any questions about the repo, open an issue or contact me directly at [${data.email}](${emailLink}). You can find more of my work at [${data.name}](${githubLink}).`;
 
+  // Conditionally include the Screenshots section with images
+  if (data.screenshots) {
+    readmeContent += `
+    
+## Screenshots
+<!-- Add screenshots here -->
+<img src="path_to_screenshot_image_1" alt="Screenshot 1">
+<img src="path_to_screenshot_image_2" alt="Screenshot 2">
 `;
+  }
+
+  return readmeContent;
 }
 
 module.exports = generateMarkdown;

@@ -1,7 +1,6 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const { type } = require('os');
 const markdown = require('./utils/generate')
 
 // TODO: Create a function to initialize app
@@ -56,11 +55,36 @@ function init() {
                 name: 'contributing',
                 message: 'What does the user need to know about contributing to the repo?',
             },
+            {
+                type: 'confirm',
+                name: 'screenshots',
+                message: 'Would you like to include screenshots in the README file?',
+                default: false,
+            },
         ])
 
         // TODO: Create a function to write README file
         .then((data) => {
-            fs.writeFile('README.md', markdown(data), (err) => { // Call the generateMarkdown function
+            // Generate README content using the provided data
+            let readmeContent = markdown(data);
+
+            // Check if the user wants to include screenshots
+            if (data.screenshots) {
+                // Add a section for screenshots in the Table of Contents
+                readmeContent += `
+- [Screenshots](#screenshots)
+`;
+
+                // Add the screenshot section
+                readmeContent += `
+## Screenshots
+<!-- Add screenshots here -->
+<img src="path_to_screenshot_image_1" alt="Screenshot 1">
+<img src="path_to_screenshot_image_2" alt="Screenshot 2">
+`;
+            }
+
+            fs.writeFile('README.md', readmeContent, (err) => { // Call the generateMarkdown function
                 if (err) {
                     console.error(err);
                 } else {
