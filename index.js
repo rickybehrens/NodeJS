@@ -72,16 +72,15 @@ function init() {
             if (data.screenshots) {
                 // Add a section for screenshots in the Table of Contents
                 readmeContent += `
-- [Screenshots](#screenshots)
-`;
+            - [Screenshots](#screenshots)`;
 
                 // Add the screenshot section
                 readmeContent += `
-## Screenshots
-<!-- Add screenshots here -->
-<img src="path_to_screenshot_image_1" alt="Screenshot 1">
-<img src="path_to_screenshot_image_2" alt="Screenshot 2">
-`;
+            ## Screenshots
+            <!-- Add screenshots here -->
+            <img src="path_to_screenshot_image_1" alt="Screenshot 1">
+            <img src="path_to_screenshot_image_2" alt="Screenshot 2">
+            `;
             }
 
             fs.writeFile('README.md', readmeContent, (err) => { // Call the generateMarkdown function

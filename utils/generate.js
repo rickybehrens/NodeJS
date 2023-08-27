@@ -54,8 +54,9 @@ function generateMarkdown(data) {
   // Get the license link URL based on the selected license
   const licenseLinkUrl = renderLicenseLink(data.license);
 
+  // Replace placeholders in the template with actual user answers
   let readmeContent = `# ${data.title}
-  [![Github License](${licenseBadgeUrl})](${licenseLinkUrl})
+[![Github License](${licenseBadgeUrl})](${licenseLinkUrl})
 
 ## Project Description
 ${data.description}
@@ -65,25 +66,68 @@ ${data.description}
 - [Usage](#usage)
 - [License](#license)
 - [Contributing](#contributing)
-- [Tests](#test)
+- [Tests](#tests)
 - [Questions](#questions)`;
 
-  // Only include the Screenshots section if data.screenshots is true
+  // Conditionally include the Screenshots section with images
   if (data.screenshots) {
     readmeContent += `
 - [Screenshots](#screenshots)`;
+  }
+
+  // Append the user's answer for the "Installation" section
+  readmeContent += `
   
-    // Add the screenshot section
-    readmeContent += `
-    
+## Installation
+To install necessary dependencies, run the following command:
+\`\`\`
+${data.installation}
+\`\`\`
+`;
+
+  // Append the user's answer for the "Usage" section
+  readmeContent += `
+  
+## Usage
+${data.usage}
+`;
+
+  // Append the user's answer for the "Contributing" section
+  readmeContent += `
+  
+## Contributing
+${data.contributing}
+`;
+
+  // Append the user's answer for the "Tests" section
+  readmeContent += `
+  
+## Tests
+To run tests, run the following command:
+\`\`\`
+${data.test}
+\`\`\`
+`;
+
+  // Append the user's answer for the "Questions" section
+  readmeContent += `
+  
+## Questions
+If you have any questions about the repo, open an issue or contact me directly at [${data.email}](${emailLink}). You can find more of my work at [${data.name}](${githubLink}).
+`;
+
+// Conditionally include the Screenshots section with images
+if (data.screenshots) {
+  readmeContent += `
 ## Screenshots
 <!-- Add screenshots here -->
 <img src="path_to_screenshot_image_1" alt="Screenshot 1">
 <img src="path_to_screenshot_image_2" alt="Screenshot 2">
 `;
-  }
+}
 
-  return readmeContent;
+// Return the completed README content
+return readmeContent;
 }
 
 module.exports = generateMarkdown;
