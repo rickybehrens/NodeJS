@@ -1,7 +1,7 @@
-# Test 1
+# Testing links
 
 ## Project Description
-Test 2
+currently the link to the repo is not working great
 
 ## Table of Contents
 - [Installation](#installation)
@@ -18,13 +18,13 @@ npm i
 ```
 
 ## Usage
-Test 3
+huh
 
 ## License
-This project is licensed under the MIT license
+This project is licensed under the Apache 2.0 license
 
 ## Contributing
-Test 4
+maybe
 
 ## Test
 To run tests, run the following command:
@@ -33,5 +33,5 @@ npm test
 ```
 
 ## Questions
-If you have any questions about the repo, open an issue or contact me directly at [behrensricardo@gmail.com](mailto:behrensricardo@gmail.com). You can find more of my work at [rickybehrens](www.github.com/rickybehrens).
+If you have any questions about the repo, open an issue or contact me directly at [behrensricardo@gmail.com](mailto:behrensricardo@gmail.com). You can find more of my work at [rickybehrens](https://github.com/rickybehrens).
 
