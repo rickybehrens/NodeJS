@@ -9,7 +9,7 @@ function renderLicenseBadge(license) {
     'BSD 2-Clause': 'https://img.shields.io/badge/License-BSD_2--Clause-orange.svg',
     'Boost 1.0': 'https://img.shields.io/badge/License-Boost_1.0-lightblue.svg',
     'Creative Commons 1.0': 'https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg',
-    'None': 'https://img.shields.io/badge/license-Unlicense-blue.svg',
+    'None': '',
   };
 
   // Get the license badge URL based on the selected license
@@ -28,7 +28,7 @@ function renderLicenseLink(license) {
     'BSD 2-Clause': 'https://opensource.org/licenses/BSD-2-Clause',
     'Boost 1.0': 'https://www.boost.org/LICENSE_1_0.txt',
     'Creative Commons 1.0': 'http://creativecommons.org/publicdomain/zero/1.0/',
-    'None': 'http://unlicense.org/',
+    'None': '',
   };
 
   // Get the license link URL based on the selected license
@@ -40,8 +40,35 @@ function renderLicenseLink(license) {
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-  // You can include license information here
-  return `This project is licensed under the ${license} license.`;
+  const licenseInfo = {
+    // You can include license information here
+    'Apache 2.0': 'Copyright 2023 Ricardo Behrens\n\n' +
+    'Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n\n' +
+    'http://www.apache.org/licenses/LICENSE-2.0\n\n' +
+    'Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.',
+    'GNU 3.0': '',
+    'MIT': 'Copyright (c) 2012-2023 Scott Chacon and others\n\n' +
+      'Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\n' +
+      'The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\n' +
+      'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.',
+    'BSD 2-Clause': 'Copyright 1992-2012 The FreeBSD Project. All rights reserved.\n\n' +
+      'Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:\n\n' +
+      '1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.\n\n' +
+      '2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.\n\n' +
+      'THIS SOFTWARE IS PROVIDED BY THE FREEBSD PROJECT "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE FREEBSD PROJECT OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\n' +
+      'The views and conclusions contained in the software and documentation are those of the authors and should not be interpreted as representing official policies, either expressed or implied, of the FreeBSD Project.',
+    'Boost 1.0': 'Boost Software License - Version 1.0 - August 17th, 2003\n\n' +
+      'Permission is hereby granted, free of charge, to any person or organization obtaining a copy of the software and accompanying documentation covered by this license (the "Software") to use, reproduce, display, distribute, execute, and transmit the Software, and to prepare derivative works of the Software, and to permit third-parties to whom the Software is furnished to do so, all subject to the following:\n\n' +
+      'The copyright notices in the Software and this entire statement, including the above license grant, this restriction and the following disclaimer, must be included in all copies of the Software, in whole or in part, and all derivative works of the Software, unless such copies or derivative works are solely in the form of machine-executable object code generated by a source language processor.\n\n' +
+      'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE SOFTWARE BE LIABLE FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.',
+    'Creative Commons 1.0': '',
+    'None': '',
+  };
+
+  // Get the license information based on the selected license
+  const information = licenseInfo[license] || '';
+
+  return information;
 }
 
 // TODO: Create a function to generate markdown for README
@@ -53,6 +80,8 @@ function generateMarkdown(data) {
   const licenseBadgeUrl = renderLicenseBadge(data.license);
   // Get the license link URL based on the selected license
   const licenseLinkUrl = renderLicenseLink(data.license);
+  // Get the license information based on the selected license
+  const licenseInformation = renderLicenseSection(data.license);
 
   // Replace placeholders in the template with actual user answers
   let readmeContent = `# ${data.title}
@@ -84,7 +113,6 @@ To install necessary dependencies, run the following command:
 ${data.installation}
 \`\`\`
 `;
-
   // Append the user's answer for the "Usage" section
   readmeContent += `
   
@@ -95,6 +123,15 @@ ${data.usage}
   // Append the user's answer for the "Contributing" section
   readmeContent += `
   
+## License
+This project is licensed under the ${data.license} license.
+
+${licenseInformation}
+  `;
+
+  // Append the user's answer for the "Contributing" section
+  readmeContent += `
+    
 ## Contributing
 ${data.contributing}
 `;
@@ -108,7 +145,6 @@ To run tests, run the following command:
 ${data.test}
 \`\`\`
 `;
-
   // Append the user's answer for the "Questions" section
   readmeContent += `
   
@@ -116,18 +152,19 @@ ${data.test}
 If you have any questions about the repo, open an issue or contact me directly at [${data.email}](${emailLink}). You can find more of my work at [${data.name}](${githubLink}).
 `;
 
-// Conditionally include the Screenshots section with images
-if (data.screenshots) {
-  readmeContent += `
+
+  // Conditionally include the Screenshots section with images
+  if (data.screenshots) {
+    readmeContent += `
 ## Screenshots
 <!-- Add screenshots here -->
 <img src="path_to_screenshot_image_1" alt="Screenshot 1">
 <img src="path_to_screenshot_image_2" alt="Screenshot 2">
 `;
-}
+  }
 
-// Return the completed README content
-return readmeContent;
+  // Return the completed README content
+  return readmeContent;
 }
 
 module.exports = generateMarkdown;
