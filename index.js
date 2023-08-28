@@ -10,6 +10,11 @@ function init() {
             {
                 type: 'input',
                 name: 'name',
+                message: 'What is your name?',
+            },
+            {
+                type: 'input',
+                name: 'username',
                 message: 'What is your GitHub username?',
             },
             {
@@ -31,7 +36,7 @@ function init() {
                 type: 'list',
                 name: 'license',
                 message: 'What kind of license should your project have?',
-                choices: ['Apache 2.0', 'GNU 3.0', 'MIT', 'BSD 2-Clause', 'Boost 1.0', 'Creative Commons 1.0', 'None']
+                choices: ['Apache 2.0', 'GNU 3.0', 'MIT', 'BSD 2-Clause', 'Boost 1.0', 'None']
             },
             {
                 type: 'input',

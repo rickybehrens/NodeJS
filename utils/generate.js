@@ -8,7 +8,6 @@ function renderLicenseBadge(license) {
     'MIT': 'https://img.shields.io/badge/License-MIT-yellow.svg',
     'BSD 2-Clause': 'https://img.shields.io/badge/License-BSD_2--Clause-orange.svg',
     'Boost 1.0': 'https://img.shields.io/badge/License-Boost_1.0-lightblue.svg',
-    'Creative Commons 1.0': 'https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg',
     'None': '',
   };
 
@@ -27,7 +26,6 @@ function renderLicenseLink(license) {
     'MIT': 'https://opensource.org/licenses/MIT',
     'BSD 2-Clause': 'https://opensource.org/licenses/BSD-2-Clause',
     'Boost 1.0': 'https://www.boost.org/LICENSE_1_0.txt',
-    'Creative Commons 1.0': 'http://creativecommons.org/publicdomain/zero/1.0/',
     'None': '',
   };
 
@@ -36,18 +34,20 @@ function renderLicenseLink(license) {
 
   return linkUrl;
 }
-
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
   const licenseInfo = {
     // You can include license information here
-    'Apache 2.0': 'Copyright 2023 Ricardo Behrens\n\n' +
-    'Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n\n' +
-    'http://www.apache.org/licenses/LICENSE-2.0\n\n' +
-    'Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.',
-    'GNU 3.0': '',
-    'MIT': 'Copyright (c) 2012-2023 Scott Chacon and others\n\n' +
+    'Apache 2.0': 'Copyright (c) [INPUT YEAR HERE] [INPUT AUTHOR HERE]\n\n' +
+      'Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n\n' +
+      'http://www.apache.org/licenses/LICENSE-2.0\n\n' +
+      'Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.',
+    'GNU 3.0': 'Copyright (c) [INPUT YEAR HERE] [INPUT AUTHOR HERE]\n\n' +
+      'This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.\n\n' +
+      'This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.\n\n' +
+      'You should have received a copy of the GNU General Public License along with this program.  If not, see <https://www.gnu.org/licenses/>.',
+    'MIT': 'Copyright (c) [INPUT YEAR HERE] [INPUT AUTHOR HERE]\n\n' +
       'Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\n' +
       'The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\n' +
       'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.',
@@ -61,7 +61,6 @@ function renderLicenseSection(license) {
       'Permission is hereby granted, free of charge, to any person or organization obtaining a copy of the software and accompanying documentation covered by this license (the "Software") to use, reproduce, display, distribute, execute, and transmit the Software, and to prepare derivative works of the Software, and to permit third-parties to whom the Software is furnished to do so, all subject to the following:\n\n' +
       'The copyright notices in the Software and this entire statement, including the above license grant, this restriction and the following disclaimer, must be included in all copies of the Software, in whole or in part, and all derivative works of the Software, unless such copies or derivative works are solely in the form of machine-executable object code generated by a source language processor.\n\n' +
       'THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE SOFTWARE BE LIABLE FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.',
-    'Creative Commons 1.0': '',
     'None': '',
   };
 
@@ -73,7 +72,7 @@ function renderLicenseSection(license) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  const githubLink = `https://github.com/${data.name}`;
+  const githubLink = `https://github.com/${data.username}`;
   const emailLink = `mailto:${data.email}`;
 
   // Get the license badge URL based on the selected license
@@ -149,7 +148,7 @@ ${data.test}
   readmeContent += `
   
 ## Questions
-If you have any questions about the repo, open an issue or contact me directly at [${data.email}](${emailLink}). You can find more of my work at [${data.name}](${githubLink}).
+If you have any questions about the repo, open an issue or contact me directly at [${data.email}](${emailLink}). You can find more of my work at [${data.username}](${githubLink}).
 `;
 
 
