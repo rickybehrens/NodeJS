@@ -120,7 +120,8 @@ ${data.usage}
   
 ## License
 This project is licensed under the ${data.license} license.\n\n
-Copyright 2023 ${data.name}. All rights reserved.
+Copyright (c) ${new Date().getFullYear()} ${data.name}. All rights reserved.
+
 
 ${licenseInformation}
   `;
