@@ -1,8 +1,8 @@
 # NodeJS Challenge
 [![Github License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-repo URL: https://github.com/rickybehrens/NodeJS/tree/main
-DEMO Video URL: https://drive.google.com/file/d/1uh7ZS3HjeP4ct_8lzYIZj0KFyR4eEaLx/view?usp=drive_link
+- repo URL: https://github.com/rickybehrens/NodeJS/tree/main
+- DEMO Video URL: https://drive.google.com/file/d/1uh7ZS3HjeP4ct_8lzYIZj0KFyR4eEaLx/view?usp=drive_link
 
 
 ## Project Description
