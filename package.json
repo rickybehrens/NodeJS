@@ -1,0 +1,22 @@
+{
+  "name": "09-nodejs",
+  "version": "1.0.0",
+  "description": "README Generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rickybehrens/NodeJS.git#main"
+  },
+  "author": "Ricardo Behrens",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rickybehrens/NodeJS/issues"
+  },
+  "homepage": "https://github.com/rickybehrens/NodeJS/tree/main#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
+}
